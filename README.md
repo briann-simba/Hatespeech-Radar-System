@@ -6,4 +6,3 @@ Displays tweets from a specified stream.
 Classifies textual tweets as either hate-speech or non-hate-speech.
 Displays flagged users.
 Sends an admin an SMS message when a post is flagged as hate-speech
-![image](https://user-images.githubusercontent.com/60653741/209291432-6fa8174d-e5e6-4d1b-a1ef-11e46a31ce64.png)
