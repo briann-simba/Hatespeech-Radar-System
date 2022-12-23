@@ -1,0 +1,13 @@
+nltk==3.7
+Flask_Cors==3.0.10
+pandas==1.4.2
+dataset==1.5.2
+numpy==1.21.2
+Flask_SQLAlchemy==2.5.1
+Flask==2.1.2
+twilio==7.9.2
+SQLAlchemy==1.4.36
+Authlib==1.1.0
+tweepy==3.10.0
+python-dotenv==0.21.0
+scikit_learn==1.2.0
