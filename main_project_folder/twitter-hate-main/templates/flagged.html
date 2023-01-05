@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{%block content%}
+
+
+<!-- 
+<a class="nav-item nav-link" href="{{url_for('stream')}}">Account</a> -->
+        <div id="display"></div>
+        <div id="" style="overflow:visible; height:400px;"><h1></h1>
+            <table class="styled-table">
+              
+              <thead>
+                  <tr>
+                      <th>User</th>
+                      <th>Location</th>
+                      <th>Tweet</th>
+                      <th>Posted At</th>
+                      <th>Label</th>
+                  </tr>
+              </thead>
+              <tbody id="tbody">
+            
+                  <tr class="active-row" id="master" >
+                    
+          
+                      <td id="user"></td>
+                      <td id="location"></td>
+                      <td id="tweet"></td>
+                      <td id="created_at"></td>
+                      <td id="label"></td>
+                  </tr>
+                  
+              </tbody>
+            </table>
+           
+          </div>
+        <script>
+            $(document).ready(function(){
+            
+            setInterval(function(){
+                $.ajax({
+                    type: 'GET',
+                    url : "/get_tweets",
+                    success: function(response){
+                        console.log(response);
+                        console.log("call happened")
+                        $("#tbody").empty();
+                        var count=0;
+                        for (var key in response.tweets)
+                        {
+                        
+                            var temp="<tr class='active-row'>"
+                                +"<td>"+response.tweets[key].user_name
+                                    +"</td>" 
+                                    +"<td>"+response.tweets[key].location+"</td>"+"<td>"
+                                        +response.tweets[key].tweet_body+"</td>"+"<td>"
+                                            +response.tweets[key].created_at+"</td>"+"<td>"
+                                                +response.tweets[key].label+"</td>"+"</tr>";
+                            if (response.tweets[key].label=="HATESPEECH"){
+                            $("#tbody").append(temp);
+                            }
+                        }
+                    },
+                    error: function(response){
+                        alert('An error occured')
+                    }
+                });
+            },1000);
+            })
+            </script>
+{%endblock%}
